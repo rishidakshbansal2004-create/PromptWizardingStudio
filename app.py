@@ -333,7 +333,3 @@ if st.session_state.get("comparison_done", False):
         st.divider()
         st.info(f"⚖️ Judge's verdict: {st.session_state['custom_reasoning']}")
 
-st.divider()
-if st.button("🔄 New Comparison"):
-    st.session_state.clear()
-    st.rerun()

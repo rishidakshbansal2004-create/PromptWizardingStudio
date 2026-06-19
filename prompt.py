@@ -154,7 +154,7 @@ The user's custom prompt and its response (not yet scored):
 Custom Prompt: {custom_prompt}
 Response D : {custom_response}
 
-Dvide scoring in two parts 80 points for the quality of the response itself, and 17 points for the quality of the user's prompt .
+Dvide scoring in two parts 80 points for the quality of the response itself, and 20 points for the quality of the user's prompt .
 
 RESPONSE SCORING: OUT OF 80 POINTS, score Response D on the following criteria:
 Using the existing scores as your calibration baseline(scale them out of 80 instead of 100), score Response D on the same criteria:

@@ -110,7 +110,7 @@ Evaluation criteria:
 2. Completeness — does it cover what's actually needed, no more, no less?
 3. Appropriateness of length — a concise, direct answer that fully satisfies the task is BETTER  and should be rewardedthan a longer one that pads with unnecessary detail which should be penalized. Only reward length when the task genuinely requires depth, multiple steps, or thorough explanation. Penalize responses that are needlessly long without adding value, and penalize responses that are too brief to actually answer what was asked.
 4. Clarity and coherence — is it well-structured and easy to understand(should be rewarded), or is it confusing and disorganized(should be penalized)?
-5. Reward if the response demonstrates the specific strengths of its prompting technique — for example, does the few-shot response effectively leverage the examples provided, and does the chain-of-thought response show clear step-by-step reasoning
+5. Reward well if the response demonstrates the specific strengths of its prompting technique — for example, does the few-shot response effectively leverage the examples provided, and does the chain-of-thought response show clear step-by-step reasoning
 
 Keep in mind:
 
@@ -154,14 +154,16 @@ The user's custom prompt and its response (not yet scored):
 Custom Prompt: {custom_prompt}
 Response D : {custom_response}
 
-Dvide scoring in two parts 83 points for the quality of the response itself, and 17 points for the quality of the user's prompt .
+Dvide scoring in two parts 80 points for the quality of the response itself, and 17 points for the quality of the user's prompt .
 
-RESPONSE SCORING: OUT OF 83 POINTS, score Response D on the following criteria:
-Using the existing scores as your calibration baseline(scale them out of 83 instead of 100), score Response D on the same criteria:
+RESPONSE SCORING: OUT OF 80 POINTS, score Response D on the following criteria:
+Using the existing scores as your calibration baseline(scale them out of 80 instead of 100), score Response D on the same criteria:
 11. Relevance and factual accuracy — does it correctly address the task?
 2. Completeness — does it cover what's actually needed, no more, no less?
 3. Appropriateness of length — a concise, direct answer that fully satisfies the task is BETTER  and should be rewardedthan a longer one that pads with unnecessary detail which should be penalized. Only reward length when the task genuinely requires depth, multiple steps, or thorough explanation. Penalize responses that are needlessly long without adding value, and penalize responses that are too brief to actually answer what was asked.
 4. Clarity and coherence — is it well-structured and easy to understand(should be rewarded), or is it confusing and disorganized(should be penalized)?
+5. Reward well if the response demonstrates the specific strengths of its prompting technique — for example, does the few-shot response effectively leverage the examples provided, and does the chain-of-thought response show clear step-by-step reasoning
+
 Note:Following process is the evaluation process followed by other judges on other 3 responses, so take this process as a baseline to calibrate your scoring of Response D.
 Process:First, rank the three responses from strongest to weakest based on the criteria above. 
 Then assign scores that clearly reflect this relative ordering — the gap between the best and worst response should be meaningful (at least 10-15 points) unless they are genuinely nearly identical in substance. 
@@ -169,7 +171,7 @@ Do not default to giving multiple responses the same or near-identical scores un
 Most good responses should fall in the 65-92 range, with higher scores reserved only for exceptional, clearly superior answers and lower scores than 60 to really poor ones that fail to meet the task requirements in important ways.
 
 
-PROMPT SCORING:OUT OF 17 POINTS, score the user's prompt on the following criteria:
+PROMPT SCORING:OUT OF 20 POINTS, score the user's prompt on the following criteria:
 Reward prompts that:
 Clearly communicate the objective
 Specify useful constraints or formatting

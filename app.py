@@ -8,19 +8,19 @@ from typing import Literal
 import time
 
 load_dotenv()
-api_key_resp = os.getenv("Res_Gem_Api_Key")
+api_key_resp = st.secrets.get("Res_Gem_Api_Key") or os.getenv("Res_Gem_Api_Key")
 client1 = genai.Client(api_key=api_key_resp)
-api_key_judge = os.getenv("Gem_Api_Key")
+api_key_judge = st.secrets.get("Gem_Api_Key") or os.getenv("Gem_Api_Key")
 client2 = genai.Client(api_key=api_key_judge)
 
 import streamlit as st
 
 st.set_page_config(
-    page_title="Prompt Wizarding World",
+    page_title="Prompt Wizarding Studio",
     page_icon="🚀",
     layout="wide"
 )
-st.title("🚀 Prompt Wizarding world")
+st.title("🚀 Prompt Wizarding Studio")
 class TaskType(BaseModel):
     category: Literal["factual", "classification", "creative", "reasoning", "summarization"]
 class JudgeResult(BaseModel):

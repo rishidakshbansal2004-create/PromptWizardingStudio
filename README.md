@@ -5,8 +5,9 @@
 Welcome to **Prompt Wizarding World** — an interactive playground that puts the three classic prompt engineering techniques (Zero-shot, Few-shot, and Chain-of-Thought) head-to-head on any task you throw at them, scores their responses with an LLM judge, and then dares **you** to write a prompt good enough to beat all three.
 
 This isn't just a demo. It's a hands-on way to *see* prompt engineering work — and to test whether you've actually learned it.
-
-### 🔗 [Try it live](https://promptwizardingstudio.streamlit.app)
+---
+### LIVE DEMO LINK
+### 🔗 [Try it live](https://promptwizardingstudio.streamlit.app) 
 
 ![Prompt Wizarding World screenshot](demo.png)
 

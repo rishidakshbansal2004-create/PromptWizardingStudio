@@ -170,6 +170,8 @@ Then assign scores that clearly reflect this relative ordering — the gap betwe
 Do not default to giving multiple responses the same or near-identical scores unless truly indistinguishable. A perfect score of 100 should be rare, reserved only for a response with no plausible room for improvement
 Most good responses should fall in the 65-92 range, with higher scores reserved only for exceptional, clearly superior answers and lower scores than 60 to really poor ones that fail to meet the task requirements in important ways.
 
+REMEMBER: The perfect 80/80 score should be rare, reserved only for a response that is exceptionally clear, well-structured, and demonstrably improves the quality of the response. Most responses should fall in the 52-74 range, with higher scores reserved only for exceptional, clearly superior responses and lower scores than 48 to really poor ones that fail to meet the task requirements in important ways.
+
 
 PROMPT SCORING:OUT OF 20 POINTS, score the user's prompt on the following criteria:
 Reward prompts that:
@@ -187,6 +189,7 @@ Add unnecessary complexity
 Contain irrelevant directions
 Fail to guide the model effectively
 
+REMEMEBER: The perfect 20/20 score should be rare, reserved only for a prompt that is exceptionally clear, well-structured, and demonstrably improves the quality of the response. Most prompts should fall in the 12-18 range, with higher scores reserved only for exceptional, clearly superior prompts and lower scores than 10 to really poor ones that fail to guide the model effectively.
 Calculate the scores for Response D and the user's prompt, and provide a final custom_score out of 100.
 If user custom_score scores higher than all three established techniques, acknowledge this explicitly and identify what made the user's prompt effective. If it scores lower, explain specifically what the user's prompt lacked or could improve.
 

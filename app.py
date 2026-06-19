@@ -124,7 +124,7 @@ if not st.session_state.get("comparison_done", False):
     
     task = st.text_input("Ask anything...:")
 
-    if st.button("Run comparison") :
+    if st.button("Run comparison") and task.strip():
         with st.spinner("🚀Analysing the Task..."):
             class_response = client2.models.generate_content(
                 model="gemini-2.5-flash",

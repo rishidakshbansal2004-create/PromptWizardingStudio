@@ -110,8 +110,8 @@ Evaluation criteria:
 2. Completeness — does it cover what's actually needed, no more, no less?
 3. Appropriateness of length — a concise, direct answer that fully satisfies the task is BETTER  and should be rewardedthan a longer one that pads with unnecessary detail which should be penalized. Only reward length when the task genuinely requires depth, multiple steps, or thorough explanation. Penalize responses that are needlessly long without adding value, and penalize responses that are too brief to actually answer what was asked.
 4. Clarity and coherence — is it well-structured and easy to understand(should be rewarded), or is it confusing and disorganized(should be penalized)?
-
-You can rephrase it as:
+5. Reward if the response demonstrates the specific strengths of its prompting technique — for example, does the few-shot response effectively leverage the examples provided, and does the chain-of-thought response show clear step-by-step reasoning
+keep in mind:
 
 Important: Evaluate all three responses simultaneously before assigning any scores. 
 Do not assess one response, score it, and then move on to the next. 
@@ -123,7 +123,7 @@ Process:
 First, rank the three responses from strongest to weakest based on the criteria above. 
 Then assign scores that clearly reflect this relative ordering — the gap between the best and worst response should be meaningful (at least 10-15 points) unless they are genuinely nearly identical in substance. 
 Do not default to giving multiple responses the same or near-identical scores unless truly indistinguishable. A perfect score of 100 should be rare, reserved only for a response with no plausible room for improvement
-Most good responses should fall in the 60-92 range, with higher scores reserved only for exceptional, clearly superior answers and lower scores than 60 to really poor ones that fail to meet the task requirements in important ways.
+Most good responses should fall in the 65-92 range, with higher scores reserved only for exceptional, clearly superior answers and lower scores than 60 to really poor ones that fail to meet the task requirements in important ways.
 
 
 After scoring, identify the best technique and explain your reasoning in 1-2 sentences, referencing the specific criteria above that drove your decision."""
@@ -137,3 +137,54 @@ def classify_task_prompt(task):
 5. summarization - if asked for a conclusion, shortening of text, extracting key points, or explaining something briefly
 
 Task: {task}"""
+
+
+def judge_custom_prompt(task, resp1, resp2, resp3, zero_score, few_score, cot_score, custom_prompt,custom_response):
+    return f"""You are a strict expert evaluator. A user has written their own custom prompt to answer a task, and you must evaluate how well it performed compared to three established prompting techniques.
+
+Task: {task}
+
+The three established technique responses and their scores (already evaluated):
+Response A (Zero-shot, scored {zero_score}/100): {resp1}
+Response B (Few-shot, scored {few_score}/100): {resp2}
+Response C (Chain-of-Thought, scored {cot_score}/100): {resp3}
+
+The user's custom prompt and its response (not yet scored):
+Custom Prompt: {custom_prompt}
+Response D : {custom_response}
+
+Dvide scoring in two parts 83 points for the quality of the response itself, and 17 points for the quality of the user's prompt .
+
+RESPONSE SCORING: OUT OF 83 POINTS, score Response D on the following criteria:
+Using the existing scores as your calibration baseline(scale them out of 83 instead of 100), score Response D on the same criteria:
+11. Relevance and factual accuracy — does it correctly address the task?
+2. Completeness — does it cover what's actually needed, no more, no less?
+3. Appropriateness of length — a concise, direct answer that fully satisfies the task is BETTER  and should be rewardedthan a longer one that pads with unnecessary detail which should be penalized. Only reward length when the task genuinely requires depth, multiple steps, or thorough explanation. Penalize responses that are needlessly long without adding value, and penalize responses that are too brief to actually answer what was asked.
+4. Clarity and coherence — is it well-structured and easy to understand(should be rewarded), or is it confusing and disorganized(should be penalized)?
+Note:Following process is the evaluation process followed by other judges on other 3 responses, so take this process as a baseline to calibrate your scoring of Response D.
+Process:First, rank the three responses from strongest to weakest based on the criteria above. 
+Then assign scores that clearly reflect this relative ordering — the gap between the best and worst response should be meaningful (at least 10-15 points) unless they are genuinely nearly identical in substance. 
+Do not default to giving multiple responses the same or near-identical scores unless truly indistinguishable. A perfect score of 100 should be rare, reserved only for a response with no plausible room for improvement
+Most good responses should fall in the 65-92 range, with higher scores reserved only for exceptional, clearly superior answers and lower scores than 60 to really poor ones that fail to meet the task requirements in important ways.
+
+
+PROMPT SCORING:OUT OF 17 POINTS, score the user's prompt on the following criteria:
+Reward prompts that:
+Clearly communicate the objective
+Specify useful constraints or formatting
+Reduce ambiguity
+Include helpful examples or structure
+Improve answer quality in a meaningful way
+
+
+Penalize prompts that:
+Are vague or underspecified
+Include contradictory instructions
+Add unnecessary complexity
+Contain irrelevant directions
+Fail to guide the model effectively
+
+Calculate the scores for Response D and the user's prompt, and provide a final custom_score out of 100.
+If user custom_score scores higher than all three established techniques, acknowledge this explicitly and identify what made the user's prompt effective. If it scores lower, explain specifically what the user's prompt lacked or could improve.
+
+Identify which of the four responses (zero_shot, few_shot, cot, or custom)according to final marks, performed best overall."""

@@ -303,7 +303,7 @@ if st.session_state.get("comparison_done", False):
 
                 custom_judge_resp = call_with_retry(
                     client1,
-                    "gemini-2.5-flash",
+                    "gemini-3.5-flash",
                     judge_custom_prompt(
                         st.session_state["task"],
                         st.session_state["resp1"],
